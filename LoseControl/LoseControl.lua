@@ -11244,10 +11244,12 @@ local function HookCompactRaidFrame(compactRaidFrame)
 		if compactRaidFrame:IsForbidden() then
 			LCHookedCompactRaidFrames[compactRaidFrame] = false
 		else
-			compactRaidFrame:HookScript("OnAttributeChanged", function(self, key, value)
-				if self:IsForbidden() then return end
-				UpdateRaidIconsAnchorCompactRaidFrame(self, key, value)
-			end)
+			-- 12.0 engine: do NOT HookScript OnAttributeChanged on compact unit frames.
+			-- Blizzard_PrivateAurasUI requires the OnAttributeChanged slot of these frames to be empty
+			-- ("Container frame already has an OnAttributeChanged script" assert in
+			-- RegisterSettingsChangeHandler), and the hooked handler taints the private aura update path
+			-- (forbidden GetAllPrivateAuras call). Unit changes are tracked via a secure post-hook on
+			-- CompactUnitFrame_SetUnit instead (see LoseControl_HookCompactRaidFrames).
 			compactRaidFrame:HookScript("OnShow", function(self)
 				if self:IsForbidden() then return end
 				UpdateRaidIconsAnchorCompactRaidFrame(self)
@@ -11322,7 +11324,7 @@ local function MainHookCompactRaidFrames()
 				break
 			end
 		end
-		if tonumber(C_CVar.GetCVar("useCompactPartyFrames")) > 0 then
+		if EditModeManagerFrame:UseRaidStylePartyFrames() then
 			for i = 1, 4 do
 				if LoseControlDB.frames["party"..i].enabled and LoseControlDB.frames["party"..i].anchor == "Blizzard" then
 					somePartyRaidEnabledAndBlizzAnchored = true
@@ -11338,6 +11340,13 @@ local function MainHookCompactRaidFrames()
 			hooksecurefunc("CompactUnitFrame_OnLoad", function(self)
 				HookCompactRaidFrame(self)
 				UpdateRaidIconsAnchorCompactRaidFrame(self)
+			end)
+			-- 12.0 engine: replacement for the removed OnAttributeChanged hook in HookCompactRaidFrame
+			-- (it only reacted to the "unit" key); re-anchor when the unit of a compact frame changes
+			hooksecurefunc("CompactUnitFrame_SetUnit", function(self, unit)
+				if LCHookedCompactRaidFrames[self] then
+					UpdateRaidIconsAnchorCompactRaidFrame(self, "unit", unit)
+				end
 			end)
 			LoseControlCompactRaidFramesHooked = true
 		end
