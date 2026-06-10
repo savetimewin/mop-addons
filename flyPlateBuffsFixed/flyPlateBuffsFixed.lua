@@ -940,7 +940,7 @@ local function UpdateBuffIcon(self)
 
   if db.showDuration and self.expiration > 0 then
     if db.durationPosition == 1 or db.durationPosition == 3 then
-      self.durationtext:SetFont(fPB.font, (self.durationSize or db.durationSize), "NORMAL")
+      self.durationtext:SetFont(fPB.font, (self.durationSize or db.durationSize))
       self.durationBg:Show()
     else
       self.durationtext:SetFont(fPB.font, (self.durationSize or db.durationSize), "OUTLINE")
@@ -948,14 +948,16 @@ local function UpdateBuffIcon(self)
     self.durationtext:Show()
   end
   if self.stack > 1 then
+    if db.stackPosition == 2 or db.stackPosition == 3 then
+      self.stacktext:SetFont(fPB.stackFont, (self.stackSize or db.stackSize))
+    else
+      self.stacktext:SetFont(fPB.stackFont, (self.stackSize or db.stackSize), "OUTLINE")
+    end
     self.stacktext:SetText(tostring(self.stack))
     if db.stackPosition == 2 or db.stackPosition == 3 then
-      self.stacktext:SetFont(fPB.stackFont, (self.stackSize or db.stackSize), "NORMAL")
       self.stackBg:SetWidth(self.stacktext:GetStringWidth())
       self.stackBg:SetHeight(self.stacktext:GetStringHeight())
       self.stackBg:Show()
-    else
-      self.stacktext:SetFont(fPB.stackFont, (self.stackSize or db.stackSize), "OUTLINE")
     end
     self.stacktext:Show()
   end
@@ -988,12 +990,12 @@ local function UpdateBuffIconOptions(self, token)
     self.durationBg:ClearAllPoints()
     if db.durationPosition == 1 then
       -- under icon
-      self.durationtext:SetFont(fPB.font, (self.durationSize or db.durationSize), "NORMAL")
+      self.durationtext:SetFont(fPB.font, (self.durationSize or db.durationSize))
       self.durationtext:SetPoint("TOP", self, "BOTTOM", 0, -1)
       self.durationBg:SetPoint("CENTER", self.durationtext)
     elseif db.durationPosition == 3 then
       -- above icon
-      self.durationtext:SetFont(fPB.font, (self.durationSize or db.durationSize), "NORMAL")
+      self.durationtext:SetFont(fPB.font, (self.durationSize or db.durationSize))
       self.durationtext:SetPoint("BOTTOM", self, "TOP", 0, 1)
       self.durationBg:SetPoint("CENTER", self.durationtext)
     else
@@ -1015,12 +1017,12 @@ local function UpdateBuffIconOptions(self, token)
     self.stacktext:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", -1, 3)
   elseif db.stackPosition == 2 then
     -- under icon
-    self.stacktext:SetFont(fPB.stackFont, (self.stackSize or db.stackSize), "NORMAL")
+    self.stacktext:SetFont(fPB.stackFont, (self.stackSize or db.stackSize))
     self.stacktext:SetPoint("TOP", self, "BOTTOM", 0, -1)
     self.stackBg:SetPoint("CENTER", self.stacktext)
   else
     -- above icon
-    self.stacktext:SetFont(fPB.stackFont, (self.stackSize or db.stackSize), "NORMAL")
+    self.stacktext:SetFont(fPB.stackFont, (self.stackSize or db.stackSize))
     self.stacktext:SetPoint("BOTTOM", self, "TOP", 0, 1)
     self.stackBg:SetPoint("CENTER", self.stacktext)
   end
