@@ -6,20 +6,15 @@
 
 # Allow ONLY these files
 !BigDebuffs/Spells/Mists.lua
-!Diminish/libs/DRList-1.0/Spells.lua
-!Diminish/libs/DRList-1.0/DRList-1.0/Spells.lua
+
 !flyPlateBuffsFixed/flyPlateBuffsFixed.lua
 !flyPlateBuffsFixed/spellList.lua
 !flyPlateBuffsFixed/options.lua
+
 !LoseControl/LoseControl.lua
-!GladiusEx/Data-Mists.lua
-!BigDebuffs/BigDebuffs.lua
-!BigDebuffs/BigDebuffs.xml
-!BigDebuffs/Options.lua
-!ClassicCastbars/Core/Frames.lua
-!ButtonForge/UILibCreateButton.lua
+
+!Diminish/libs/DRList-1.0/Spells.lua
+!Diminish/libs/DRList-1.0/DRList-1.0/Spells.lua
 !Diminish/core/icons.lua
 !Diminish/core/timers.lua
 !Diminish/Diminish.lua
-!GladiusEx/libs/LibCooldownTracker-1.0/library.lua
-!GladiusEx/libs/LibRangeCheck-3.0/LibRangeCheck-3.0/LibRangeCheck-3.0.lua

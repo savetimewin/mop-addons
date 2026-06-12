@@ -4590,11 +4590,7 @@ function lib:activate()
     local frame = CreateFrame("Frame")
     self.frame = frame
 
-    if C_EventUtils and C_EventUtils.IsEventValid and C_EventUtils.IsEventValid("LEARNED_SPELL_IN_TAB") then
-      frame:RegisterEvent("LEARNED_SPELL_IN_TAB")
-    else
-      pcall(frame.RegisterEvent, frame, "LEARNED_SPELL_IN_TAB")
-    end
+    frame:RegisterEvent("LEARNED_SPELL_IN_TAB")
     frame:RegisterEvent("CHARACTER_POINTS_CHANGED")
     frame:RegisterEvent("SPELLS_CHANGED")
 
