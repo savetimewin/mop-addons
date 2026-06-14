@@ -13,6 +13,6 @@
 
 !LoseControl/LoseControl.lua
 
-!Diminish
-
-!Diminish_Options
+# Allow everything inside these folders
+!Diminish/**
+!Diminish_Options/**
