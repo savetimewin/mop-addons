@@ -13434,20 +13434,16 @@ local title = OptionsPanel.container:CreateFontString(nil, "ARTWORK", "GameFontN
 title:SetText(addonName)
 
 local subText = OptionsPanel.container:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-local notes = GetAddOnMetadata(addonName, "Notes-" .. GetLocale())
-if not notes then
-	notes = GetAddOnMetadata(addonName, "Notes")
+local notes = ""
+if type(GetAddOnMetadata) == "function" then
+    notes = GetAddOnMetadata(addonName, "Notes-" .. GetLocale()) or GetAddOnMetadata(addonName, "Notes") or ""
 end
 subText:SetText(notes)
 
 -- "Unlock" checkbox - allow the frames to be moved
 local Unlock = CreateFrame("CheckButton", O.."Unlock", OptionsPanel.container, "OptionsBaseCheckButtonTemplate")
-local UnlockText = _G[O.."UnlockText"] or Unlock:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-if UnlockText then
-	UnlockText:SetText(L["Unlock"])
-	if not _G[O.."UnlockText"] then
-		_G[O.."UnlockText"] = UnlockText
-	end
+if _G[O.."UnlockText"] then
+	_G[O.."UnlockText"]:SetText(L["Unlock"])
 end
 Unlock.nextUnlockLoopTime = 0
 function Unlock:LoopFunction()
