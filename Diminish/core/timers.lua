@@ -139,6 +139,18 @@ function Timers:Refresh(unitID)
 
     if not unitGUID then return end
 
+    -- BUGFIX 5.5.4: Validate that this nameplate doesn't belong to a party member
+    -- If it does, skip refreshing to prevent duplicate icon displays
+    if unitID:match("^nameplate%d*$") and NS.db.unitFrames.party.enabled then
+        for i = 1, 5 do
+            local partyUnit = i == 0 and "player" or "party"..i
+            if UnitExists(partyUnit) and UnitGUID(partyUnit) == unitGUID then
+                -- This nameplate belongs to a party member, skip refresh
+                return
+            end
+        end
+    end
+
     -- Hide active timers belonging to previous guid
     -- Note, its probably faster to always just :Hide() frames but this
     -- will also delete any old timers
@@ -280,6 +292,23 @@ do
         if not settings.watchFriendly and timer.isFriendly then return end
         if settings.disabledCategories[timer.category] then return end
 
+        -- BUGFIX 5.5.4: Prevent icons from appearing on incorrect frames
+        -- If this is a friendly unit and party frames are enabled, skip nameplate display
+        -- This prevents friendly party members' DR from appearing on their own nameplates
+        if timer.isFriendly and unitID == "nameplate" then
+            local unitFormatted = gsub(unitID, "%d", "")
+            if NS.db.unitFrames.party.enabled and NS.db.unitFrames.party.isEnabledForZone then
+                -- Check if this timer's unit is already displayed on a party frame
+                local unitGUID = timer.unitGUID
+                for _unit, guid in pairs(activeGUIDs) do
+                    if guid == unitGUID and _unit:match("^party%d$") then
+                        -- Unit is in party frames, skip nameplate display
+                        return
+                    end
+                end
+            end
+        end
+
         -- Show root/taunt/incap/disorients DR only for special mobs
         --[[if NS.IS_RETAIL then
             if timer.isNotPetOrPlayer and (timer.category == CATEGORY_ROOT or timer.category == CATEGORY_TAUNT or timer.category == CATEGORY_INCAP or timer.category == CATEGORY_DISORIENT) then
@@ -359,15 +388,34 @@ do
             return Start(timer, isApplied, unit, isUpdate, isRefresh, onAuraEnd)
         end
 
-        -- Start timer for EVERY unitID that matches timer unit guid.
+        -- BUGFIX 5.5.4: Prevent icon overlap between nameplate and party frames
+        -- Prioritize party/raid frames over nameplates for friendly units
+        local partyUnitID = nil
         local unitGUID = timer.unitGUID
+        
+        -- First pass: check if unit is in party frames (for friendly units)
+        if timer.isFriendly then
+            for _unit, guid in pairs(activeGUIDs) do
+                if guid == unitGUID and (_unit == "player" or _unit:match("^party%d$")) then
+                    partyUnitID = _unit
+                    break
+                end
+            end
+        end
+
+        -- Start timer for EVERY unitID that matches timer unit guid
         for _unit, guid in pairs(activeGUIDs) do
             if guid == unitGUID then
-                Start(timer, isApplied, _unit, isUpdate, isRefresh, onAuraEnd)
+                -- Skip nameplate display if unit is already in party frames
+                if timer.isFriendly and partyUnitID and _unit:match("^nameplate%d*$") then
+                    -- Don't display on nameplate if already in party frames
+                else
+                    Start(timer, isApplied, _unit, isUpdate, isRefresh, onAuraEnd)
 
-                if _unit == "player" then
-                    if NS.db.unitFrames.party.isEnabledForZone then
-                        Start(timer, isApplied, "player-party", isUpdate, isRefresh, onAuraEnd)
+                    if _unit == "player" then
+                        if NS.db.unitFrames.party.isEnabledForZone then
+                            Start(timer, isApplied, "player-party", isUpdate, isRefresh, onAuraEnd)
+                        end
                     end
                 end
             end

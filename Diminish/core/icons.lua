@@ -41,11 +41,23 @@ function Icons:GetAnchor(unitID, defaultAnchor, noUIParent)
         end
 
         if not NS.db.unitFrames.party.anchorUIParent then
+            -- BUGFIX 5.5.4: Validate the found frame is actually a party frame, not a nameplate
+            -- This prevents icons from appearing on wrong frames due to EditMode changes
+            local frame
             if NS.useCompactPartyFrames or IsInRaid(LE_PARTY_CATEGORY_HOME) then
-                return Icons:FindCompactRaidFrameByUnit(unitID) or Icons:FindPartyFrameByUnit(unitID)
+                frame = Icons:FindCompactRaidFrameByUnit(unitID) or Icons:FindPartyFrameByUnit(unitID)
+                -- Verify the frame actually exists and is visible
+                if frame and frame:IsVisible() then
+                    return frame
+                end
             else
-                return Icons:FindPartyFrameByUnit(unitID)
+                frame = Icons:FindPartyFrameByUnit(unitID)
+                if frame and frame:IsVisible() then
+                    return frame
+                end
             end
+            -- If no valid frame found, return nil to prevent using wrong frame
+            return nil
         else
             return UIParent
         end
@@ -658,6 +670,21 @@ do
                     frame:ClearAllPoints()
                     frame:SetParent(parent)
                 end
+            end
+        end
+
+        -- BUGFIX 5.5.4: Validate parent frame before displaying
+        -- Ensure the frame is parented to the correct unit's frame
+        if unitID:match("^nameplate%d*$") then
+            local parent = Icons:GetAnchor(unitID)
+            if not parent or parent == UIParent then
+                -- Parent not found or set to UIParent, don't display
+                return
+            end
+            -- Ensure the parent matches this specific nameplate
+            if frame:GetParent() ~= parent then
+                frame:ClearAllPoints()
+                frame:SetParent(parent)
             end
         end
 
