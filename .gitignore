@@ -7,9 +7,8 @@
 # Allow ONLY these files
 !BigDebuffs/Spells/Mists.lua
 
-!LoseControl/LoseControl.lua
-
 # Allow everything inside these folders
 !Diminish/**
 !Diminish_Options/**
 !flyPlateBuffsFixed/**
+!GladiusEx/**
