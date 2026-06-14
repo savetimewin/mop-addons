@@ -13442,7 +13442,13 @@ subText:SetText(notes)
 
 -- "Unlock" checkbox - allow the frames to be moved
 local Unlock = CreateFrame("CheckButton", O.."Unlock", OptionsPanel.container, "OptionsBaseCheckButtonTemplate")
-_G[O.."UnlockText"]:SetText(L["Unlock"])
+local UnlockText = _G[O.."UnlockText"] or Unlock:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+if UnlockText then
+	UnlockText:SetText(L["Unlock"])
+	if not _G[O.."UnlockText"] then
+		_G[O.."UnlockText"] = UnlockText
+	end
+end
 Unlock.nextUnlockLoopTime = 0
 function Unlock:LoopFunction()
 	if (not self) then
@@ -13460,7 +13466,10 @@ function Unlock:LoopFunction()
 end
 function Unlock:OnClick()
 	if self:GetChecked() then
-		_G[O.."UnlockText"]:SetText(L["Unlock"] .. L[" (drag an icon to move)"])
+		local unlockText = _G[O.."UnlockText"]
+		if unlockText then
+			unlockText:SetText(L["Unlock"] .. L[" (drag an icon to move)"])
+		end
 		local onlyOneUnlockLoop = true
 		local keys = {} -- for random icon sillyness
 		for k in pairs(spellIds) do
@@ -13560,7 +13569,10 @@ function Unlock:OnClick()
 			LCframeplayer2:PLAYER_ENTERING_WORLD()
 		end
 	else
-		_G[O.."UnlockText"]:SetText(L["Unlock"])
+		local unlockText = _G[O.."UnlockText"]
+		if unlockText then
+			unlockText:SetText(L["Unlock"])
+		end
 		for k, v in pairs(LCframes) do
 			if not(strfind(k, "nameplate")) then
 				v.unlockMode = false
