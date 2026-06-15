@@ -774,15 +774,12 @@ do
                 -- frame.cooldown:SetCooldownDuration(expiration)
                 frame.cooldown:SetCooldown(now, expiration)
             else
-                -- Refresh cooldown without resetting timer swipe (only on aura broke/end for mode timerStartAuraEnd=false)
-                -- Thanks to sArena for this
-                local startTime, startDuration = frame.cooldown:GetCooldownTimes()
-                startTime, startDuration = startTime/1000, startDuration/1000
-
+                -- On aura end refresh: reset to a fresh DR duration starting now.
+                -- Previous implementation attempted to preserve the visual swipe
+                -- by recalculating start/duration which could drift by a few
+                -- seconds. Resetting here avoids that inaccuracy.
                 local drTime = --[[timer.isNotPetOrPlayer and 20 or]] DR_TIME
-                local newDuration = drTime / (1 - ((now - startTime) / startDuration))
-                local newStartTime = drTime + now - newDuration
-                frame.cooldown:SetCooldown(newStartTime, newDuration)
+                frame.cooldown:SetCooldown(now, drTime)
             end
         else
             frame.shown = true
