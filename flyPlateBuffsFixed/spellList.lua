@@ -174,6 +174,7 @@ local cc = {
 	123393, -- Glyph of Breath of Fire
 	105421, -- Blinding Light
 	88625, -- Holy Word: Chastise
+	137243, -- Blood Horror
 
 	-- Stun (Controlled)
 	108194, -- Asphyxiate
