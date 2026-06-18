@@ -46,7 +46,7 @@ L["UNSTABLE_AFFLICTION"] = "UA"
 L["CHASTISE"] = "Chast"
 L["COUNTERATTACK"] = "Counter"
 L["BIND_ELEMENTAL"] = GetSpellName(76780) or "Bind Elemental"
-L["CYCLONE"] = "Cyclone"
+L["CYCLONE"] = "Cyc"
 L["CHARGE"] = "Charge"
 
 -- luacheck: push ignore 542
