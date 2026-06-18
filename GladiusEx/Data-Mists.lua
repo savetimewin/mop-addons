@@ -52,6 +52,7 @@ function GladiusEx.Data.DefaultClassicon()
 		[GladiusEx:SafeGetSpellName(8122)]  	= 9,	-- Psychic Scream 
 		[GladiusEx:SafeGetSpellName(2094)]  	= 9,	-- Blind 
 		[GladiusEx:SafeGetSpellName(5782)]  	= 9,	-- Fear
+        [GladiusEx:SafeGetSpellName(51514)]  	= 9,	-- Hex
 		[GladiusEx:SafeGetSpellName(5484)]  	= 9,	-- Howl of Terror
 		[GladiusEx:SafeGetSpellName(6358)]  	= 9,	-- Seduction
 		[GladiusEx:SafeGetSpellName(5246)]  	= 9,	-- Intimidating Shout 
@@ -88,7 +89,7 @@ function GladiusEx.Data.DefaultClassicon()
 		[GladiusEx:SafeGetSpellName(18499)]  	= 6,	-- Berserker Rage
 
 		-- Unbreakable CC and Roots (5)
-
+        [GladiusEx:SafeGetSpellName(137143)]  	= 5,	-- Blood Horror
 		[GladiusEx:SafeGetSpellName(6789)]  	= 5,	-- Death Coil 
 		[GladiusEx:SafeGetSpellName(15487)]  	= 5,	-- Silence
 		[GladiusEx:SafeGetSpellName(27559)]  	= 3,	-- Silencing shot (3 second silence)
