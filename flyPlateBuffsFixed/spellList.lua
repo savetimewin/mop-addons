@@ -128,6 +128,9 @@ local silences = {
 	69179, -- Arcane Torrent (Racial, Rage)
 	80483, -- Arcane Torrent (Racial, Focus)
 	78675, -- Solar Beam
+	113286, -- Solar Beam (Symbiosis)
+	31117, -- Unstable Affliction (Silence)
+	43523, -- Unstable Affliction (Silence)
 }
 
 -- size 1.8
@@ -174,7 +177,6 @@ local cc = {
 	123393, -- Glyph of Breath of Fire
 	105421, -- Blinding Light
 	88625, -- Holy Word: Chastise
-	137243, -- Blood Horror
 
 	-- Stun (Controlled)
 	108194, -- Asphyxiate
@@ -188,7 +190,6 @@ local cc = {
 	113801, -- Bash (Treants)
 	117526, -- Binding Shot
 	24394, -- Intimidation
-	19577, -- Intimidation
 	126246, -- Lullaby (Crane pet)
 	126423, -- Petrifying Gaze (Basilisk pet)
 	126355, -- Quill (Porcupine pet)
@@ -217,6 +218,7 @@ local cc = {
 	107570, -- Storm Bolt
 	132169, -- Storm Bolt 2
 	20549, -- War Stomp (Racial)
+	835, -- Tidal Charm (magic dispellable), (probably does not exist in the game and not usable in arena)
 
 	-- Stun (Non-controlled)
 	113953, -- Paralysis

@@ -125,6 +125,7 @@ addon.Spells = {
     [107570] = { type = CROWD_CONTROL }, -- Storm Bolt
     [132169] = { type = CROWD_CONTROL }, -- Storm Bolt 2
     [20549]  = { type = CROWD_CONTROL }, -- War Stomp (Racial)
+    [835] = { type = CROWD_CONTROL }, -- Tidal Charm (magic dispellable), (probably does not exist in the game and not usable in arena)
     -- *** Non-controlled Stun Effects *** -- was "random_stun". 
     -- I get that the original author wants to separate it but having another category of dr is confusing for me or rather of an eye sore
     [113953] = { type = CROWD_CONTROL }, -- Paralysis
@@ -163,8 +164,6 @@ addon.Spells = {
 
     -- *** Mind Control Effects *** 
     [605]   = { type = CROWD_CONTROL }, -- Dominate Mind
-    [13181] = { type = CROWD_CONTROL }, -- Gnomish Mind Control Cap (Item) -- I know this is arena but just keep it incase u see it in bgs
-    [67799] = { type = CROWD_CONTROL }, -- Mind Amplification Dish (Item) -- I know this is arena but just keep it incase u see it in bgs
 
     -- *** Disarm Weapon Effects ***
     [50541]  = { type = CROWD_CONTROL }, -- Clench (Scorpid)
@@ -198,13 +197,8 @@ addon.Spells = {
     [80483]  = { type = CROWD_CONTROL }, -- Arcane Torrent (Racial, Focus)
     [31117]  = { type = CROWD_CONTROL }, -- Unstable Affliction (Silence)
     [43523]  = { type = CROWD_CONTROL }, -- Unstable Affliction (Silence)
-    [129889]  = { type = CROWD_CONTROL }, -- Solar Beam
-    [81261]  = { type = CROWD_CONTROL }, -- Solar Beam
-    [133901]  = { type = CROWD_CONTROL }, -- Solar Beam
-    [113287]  = { type = CROWD_CONTROL }, -- Solar Beam
+    [78675]  = { type = CROWD_CONTROL }, -- Solar Beam
     [113286]  = { type = CROWD_CONTROL }, -- Solar Beam (Symbiosis)
-    [129888]  = { type = CROWD_CONTROL }, -- Solar Beam
-    [133899]  = { type = CROWD_CONTROL }, -- Solar Beam
 
     [76577] = { type = CROWD_CONTROL }, -- Smoke Bomb
 
@@ -223,7 +217,8 @@ addon.Spells = {
     [50318] = { type = INTERRUPT, duration = 4 }, -- Serenity Dust (Moth - Hunter Pet)
     [50479] = { type = INTERRUPT, duration = 2},  -- Nether Shock (Nether Ray - Hunter Pet)
     [57994] = { type = INTERRUPT, duration = 2, },  -- Wind Shear
-    [78675] = { type = INTERRUPT, duration = 5 }, -- Solar Beam interrupt
+    [113288] = { type = INTERRUPT, duration = 4 }, -- Solar Beam (Symbiosis) Interrupt
+    [97547] = { type = INTERRUPT, duration = 5 }, -- Solar Beam Interrupt
     [80964] = { type = INTERRUPT, duration = 4 }, -- Skull Bash (Bear)
     [80965] = { type = INTERRUPT, duration = 4 }, -- Skull Bash (Cat)
     [91802] = { type = INTERRUPT, duration = 2 },  -- Shambling Rush (pet dk kick)
@@ -234,6 +229,7 @@ addon.Spells = {
     [386071] = { type = INTERRUPT, duration = 6 }, -- Disrupting Shout (Warrior)
 
     -- ROOTS
+    [31367] = { type = ROOT }, -- Netherweave Net (Item) (Does not work in Arena)
     [96294]  = { type = ROOT }, -- Chains of Ice (Chilblains)
     [91807]  = { type = ROOT }, -- Shambling Rush (Dark Transformation)
     [339]    = { type = ROOT }, -- Entangling Roots
