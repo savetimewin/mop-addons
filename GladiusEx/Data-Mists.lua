@@ -189,8 +189,6 @@ function GladiusEx.Data.DefaultClassicon()
         [GladiusEx:SafeGetSpellName(50541)] = 5, -- Clench (Scorpid)
         [GladiusEx:SafeGetSpellName(118093)] = 5, -- Disarm (Voidwalker/Voidlord)
         [GladiusEx:SafeGetSpellName(51722)] = 5, -- Dismantle
-        [GladiusEx:SafeGetSpellName(117368)] = 5, -- Grapple Weapon
-        [GladiusEx:SafeGetSpellName(126458)] = 5, -- Grapple Weapon (Symbiosis)
         [GladiusEx:SafeGetSpellName(64058)] = 5, -- Psychic Horror (Disarm Effect)
         [GladiusEx:SafeGetSpellName(137461)] = 5, -- Ring of Peace (Disarm effect)
         [GladiusEx:SafeGetSpellName(91644)] = 5, -- Snatch (Bird of Prey)

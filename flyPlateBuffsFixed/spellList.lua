@@ -137,8 +137,6 @@ local silences = {
 local disarms = {
 	50541, -- Clench (Scorpid)
 	91644, -- Snatch (Bird of Prey)
-	117368, -- Grapple Weapon
-	126458, -- Grapple Weapon (Symbiosis)
 	137461, -- Ring of Peace (Disarm effect)
 	64058, -- Psychic Horror (Disarm Effect)
 	51722, -- Dismantle

@@ -168,8 +168,6 @@ addon.Spells = {
     -- *** Disarm Weapon Effects ***
     [50541]  = { type = CROWD_CONTROL }, -- Clench (Scorpid)
     [91644]  = { type = CROWD_CONTROL }, -- Snatch (Bird of Prey)
-    [117368] = { type = CROWD_CONTROL }, -- Grapple Weapon
-    [126458] = { type = CROWD_CONTROL }, -- Grapple Weapon (Symbiosis)
     [137461] = { type = CROWD_CONTROL }, -- Ring of Peace (Disarm effect)
     [64058]  = { type = CROWD_CONTROL }, -- Psychic Horror (Disarm Effect)
     [51722]  = { type = CROWD_CONTROL }, -- Dismantle
