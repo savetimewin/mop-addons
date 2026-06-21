@@ -367,6 +367,7 @@ local minor_defensive_buffs = {
 	126697, -- Tremendous Fortitude
 	16491, -- Second Wind
 	114893, -- Stone Bulwark
+	114168, -- Dark Apotheosis
 }
 
 -- size 1.6
