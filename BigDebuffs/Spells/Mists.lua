@@ -289,7 +289,7 @@ addon.Spells = {
     [34976]  = { type = DEBUFF_OFFENSIVE }, -- Nether Flag (Eye of the Storm flag)
     [141210]  = { type = DEBUFF_OFFENSIVE }, -- Horde Mine (Silvershard Mines flag)
     [140876]  = { type = DEBUFF_OFFENSIVE }, -- Alliance Mine (Silvershard Mines flag)
-    
+    [83853] = { type = DEBUFF_OFFENSIVE }, -- Combustion
     [49206]  = { type = DEBUFF_OFFENSIVE }, -- Summon Gargoyle
     [108200] = { type = DEBUFF_OFFENSIVE }, -- Remorseless Winter (Indicator to see the stacks)
     [130735] = { type = DEBUFF_OFFENSIVE }, -- Soul Reaper (Frost)
