@@ -264,6 +264,14 @@ LCT_SpellData[122470] = {
 }
 
 -- Monk/Mistweaver
+-- Dematerialize
+LCT_SpellData[122464] = {
+	class = "MONK",
+	specID = { 270 },
+	heal = true,
+	duration = 2.5,
+	cooldown = 10,
+}
 -- Life Cocoon
 LCT_SpellData[116849] = {
 	class = "MONK",
