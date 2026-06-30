@@ -73,6 +73,15 @@ addonTable.CDs = {
 		[54785] = 45, -- https://www.wowhead.com/cata/ru/spell=54785
 		[59672] = 180, -- https://www.wowhead.com/cata/ru/spell=59672
 		[18708] = 180, -- https://www.wowhead.com/cata/ru/spell=18708
+		[104773] = 180, -- https://www.wowhead.com/mop-classic/spell=104773/unending-resolve
+		[108359] = 120, -- https://www.wowhead.com/mop-classic/spell=108359/dark-regeneration
+		[110913] = 180, -- https://www.wowhead.com/mop-classic/spell=110913/dark-bargain
+		[111397] = 60, -- https://www.wowhead.com/mop-classic/spell=111397/blood-horror
+		[89766] = 30, -- https://www.wowhead.com/mop-classic/spell=89766/axe-toss
+		[80240] = 25, -- https://www.wowhead.com/mop-classic/spell=80240/havoc
+		[89751] = 45, -- https://www.wowhead.com/mop-classic/spell=89751/felstorm
+		[115781] = 24, -- Optical Blast
+		[115770] = 25, -- Fellash
 	},
 	["MAGE"] = {
 		-- // reviewed 2024/05/25
@@ -157,6 +166,7 @@ addonTable.CDs = {
 		[22570] = 10,		-- https://www.wowhead.com/cata/ru/spell=22570
 		[102342] = 120, -- https://www.wowhead.com/mop/ru/spell=102342
 		[108294] = 360, -- https://www.wowhead.com/mop/ru/spell=108294
+		[132158] = 60, -- https://www.wowhead.com/mop-classic/spell=132158/natures-swiftness
 	},
 	["PALADIN"] = {
 		-- // reviewed 2024/05/25
@@ -288,6 +298,7 @@ addonTable.CDs = {
 		[1161] = 180, -- https://www.wowhead.com/cata/ru/spell=1161
 		[107570] = 30, -- 
 		[114028] = 60, --
+		[71] = 1.5, -- Defensive Stance
 	},
 	["ROGUE"] = {
 		-- // reviewed 2024/05/27
@@ -363,6 +374,7 @@ addonTable.CDs = {
 		[123986] = 30, -- https://www.wowhead.com/mop/ru/spell=1233986
 		[116680] = 30, -- https://www.wowhead.com/mop/ru/spell=116660
 		[101545] = 25, -- https://www.wowhead.com/mop/ru/spell=101545
+		[122464] = 10, -- https://www.wowhead.com/mop/ru/spell=122464
 	},
 };
 
